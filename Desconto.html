@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desconto por Categoria de Cliente</title>
+</head>
+<body>
+    <h2>Calcular Desconto Baseado na Categoria do Cliente</h2>
+    <label for="categoria">Escolha sua Categoria:</label>
+    <select id="categoria">
+        <option value="Premium">Premium</option>
+        <option value="Regular">Regular</option>
+    </select>
+    <br>
+    <input type="number" id="valorCompra" placeholder="Valor da Compra">
+    <button onclick="calcularDescontoCategoria()">Calcular Desconto</button>
+    <p id="resultadoDescontoCategoria"></p>
+
+    <script>
+        function calcularDescontoCategoria() {
+            var categoria = document.getElementById('categoria').value;
+            var valorCompra = parseFloat(document.getElementById('valorCompra').value);
+            var desconto = 0;
+
+            if (categoria === 'Premium') {
+                desconto = 0.20;
+            } else if (categoria === 'Regular') {
+                desconto = 0.10;
+            }
+
+            var valorFinal = valorCompra - (valorCompra * desconto);
+            document.getElementById('resultadoDescontoCategoria').textContent = 'Valor com desconto: R$ ' + valorFinal.toFixed(2);
+        }
+    </script>
+</body>
+</html>
